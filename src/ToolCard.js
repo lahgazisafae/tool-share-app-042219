@@ -13,7 +13,7 @@ function ToolCard(props){
                     {props.toolInfo.instructions}
                     </div>
                 </div>
-                <button onClick = {() =>props.handleSave(props.tool)}>Save! </button>
+                <button onClick = {(e)=> props.handleSave(props.toolInfo)}>{props.toolInfo.saved ? "Unsave" : "Save"}</button>
             </div>
 
 
@@ -21,6 +21,7 @@ function ToolCard(props){
 
 
     }
+
 
 
 

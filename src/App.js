@@ -3,7 +3,7 @@ import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import ToolContainer from './ToolContainer';
 import SavedToolContainer from './SavedToolContainer';
-
+import NewToolForm from './NewToolForm';
 
 class App extends React.Component {
 
@@ -49,30 +49,30 @@ class App extends React.Component {
 
   }
 
-  handleSave(toolInfo){
 
+  handleSave=(toolInfo)=>{
 
-    console.log("it saved!")
-    //change the specific tool's saved value
+    //for tool with id x 
+      //update saved boolean
+    //setState to cause a rerender
 
-    let newTools = this.state.tools.map(tool=>{
-          if(tool.id === toolInfo.id){
-            tool.saved = !tool.saved
-            return tool
-          }
-          else
-            return tool
+    let newToolArray = this.state.tools.map(tool =>{
+      if(tool.id === toolInfo.id){
+        tool.saved = !tool.saved
+        return tool}
+      else
+        return tool
     })
 
-
-    this.setState({tools:newTools})
-
+    this.setState({tool: newToolArray})
   }
 
   render(){
   return (
     <div className="App">
-      <ToolContainer handleSave= {this.handleSave} tools = {this.state.tools} color="red"/>
+
+      <ToolContainer handleSave = {this.handleSave} tools = {this.state.tools} color="red"/>
+      <NewToolForm />
       <SavedToolContainer />  
     </div>
   );
