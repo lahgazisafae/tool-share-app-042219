@@ -1,24 +1,34 @@
 import React from 'react';
 
-function ToolCard(props){
+class ToolCard extends React.Component{
 
+
+
+    componentDidUpdate(){
+        console.log("Tool Card Component Updated!")
+    }
+
+    componentWillUnmount(){
+        console.log("Tool Card Component Unmounted!")
+    }
+    render(){
         return(
             <div className="ui card">
                 <div className="image">
-                    <img src={props.toolInfo.image}/>
+                    <img src={this.props.toolInfo.image}/>
                 </div>
                 <div className="content">
-                    <a className="header"> {props.toolInfo.lender_name}</a>
+                    <a className="header"> {this.props.toolInfo.lender_name}</a>
                     <div className="description">
-                    {props.toolInfo.instructions}
+                    {this.props.toolInfo.instructions}
                     </div>
                 </div>
-                <button onClick = {(e)=> props.handleSave(props.toolInfo)}>{props.toolInfo.saved ? "Unsave" : "Save"}</button>
+                <button onClick = {(e)=> this.props.handleSave(this.props.toolInfo)}>{this.props.toolInfo.saved ? "Unsave" : "Save"}</button>
             </div>
 
 
         )
-
+        }
 
     }
 
